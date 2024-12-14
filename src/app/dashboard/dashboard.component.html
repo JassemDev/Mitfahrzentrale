@@ -1,0 +1,7 @@
+<h2 class="text-3xl font-semibold mb-6 #fb923c">Verfügbare Mitfahrangebote</h2>
+<div *ngIf="rides.length === 0">Keine verfügbaren Mitfahrangebote gefunden.</div>
+<ul>
+  <li *ngFor="let ride of rides">
+    <app-ride [ride]="ride"></app-ride>
+  </li>
+</ul>

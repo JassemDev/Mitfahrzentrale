@@ -1,0 +1,62 @@
+<form (ngSubmit)="createRide()" class="space-y-6 max-w-md mx-auto">
+  <h2 class="text-2xl font-semibold mb-6 text-center">Mitfahrangebot erstellen</h2>
+
+  <div>
+    <label for="start" class="block text-gray-700">Startort</label>
+    <input id="start" [(ngModel)]="ride.start" name="start" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="destination" class="block text-gray-700">Zielort</label>
+    <input id="destination" [(ngModel)]="ride.destination" name="destination" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div class="flex gap-4">
+    <div class="flex-1">
+      <label for="date" class="block text-gray-700">Datum</label>
+      <input id="date" [(ngModel)]="ride.date" name="date" type="date" required class="w-full border rounded p-2" />
+    </div>
+    <div class="flex-1">
+      <label for="time" class="block text-gray-700">Uhrzeit</label>
+      <input id="time" [(ngModel)]="ride.time" name="time" type="time" required class="w-full border rounded p-2" />
+    </div>
+  </div>
+
+  <div>
+    <label for="seats" class="block text-gray-700">Freie Plätze</label>
+    <input id="seats" [(ngModel)]="ride.seatsAvailable" name="seats" type="number" min="1" max="10" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="driverName" class="block text-gray-700">Fahrername</label>
+    <input id="driverName" [(ngModel)]="ride.driverName" name="driverName" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="phone" class="block text-gray-700">Telefonnummer</label>
+    <input id="phone" [(ngModel)]="ride.phone" name="phone" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="email" class="block text-gray-700">E-Mail</label>
+    <input id="email" [(ngModel)]="ride.email" name="email" type="email" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="address" class="block text-gray-700">Adresse</label>
+    <input id="address" [(ngModel)]="ride.address" name="address" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label for="carPlate" class="block text-gray-700">Autokennzeichen</label>
+    <input id="carPlate" [(ngModel)]="ride.carPlate" name="carPlate" type="text" required class="w-full border rounded p-2" />
+  </div>
+
+  <div>
+    <label class="block text-gray-700">Standort auf der Karte auswählen</label>
+    <app-map-selector (locationSelected)="onLocationSelected($event)"></app-map-selector>
+  </div>
+  <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+    Mitfahrangebot erstellen
+  </button>
+</form>

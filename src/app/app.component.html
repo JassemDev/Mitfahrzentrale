@@ -1,0 +1,24 @@
+<div class="min-h-screen flex flex-col">
+  <header class="bg-cyan-500 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2x1 font-bold">Mitfahrzentrale BBS Brinkstraße</h1>
+      <nav class="flex gap-4">
+        <a *ngIf="isAuthenticated()" routerLink="/dashboard" routerLinkActive="font-bold underline">Mitfahrzentrale Dashboard</a>
+        <a *ngIf="isAuthenticated()" routerLink="/driver-dashboard" routerLinkActive="font-bold underline">Fahrer-Dashboard</a>
+        <a *ngIf="isAuthenticated()" routerLink="/passenger-dashboard" routerLinkActive="font-bold underline">Mitfahrer-Dashboard</a>
+        <a *ngIf="isAuthenticated()" routerLink="/create-ride" routerLinkActive="font-bold underline">Angebot erstellen</a>
+        <a *ngIf="isAuthenticated()" routerLink="/profile" routerLinkActive="font-bold underline">Profil</a>
+        <a (click)="handleAuthAction()" class="hover:underline cursor-pointer">
+          {{ isAuthenticated() ? 'Abmelden' : 'Anmelden' }}
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main class="flex-grow container mx-auto py-6">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="bg-cyan-500 text-white text-center py-4">
+    &copy; 2024 Mitfahrzentrale BBS Brinkstraße
+  </footer>
+</div>

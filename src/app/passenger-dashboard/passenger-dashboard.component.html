@@ -1,0 +1,16 @@
+<h2 class="text-3xl font-semibold mb-6">Mitfahrer-Dashboard</h2>
+<div *ngIf="rides.length === 0">Keine verfügbaren Mitfahrangebote gefunden.</div>
+<ul>
+  <li *ngFor="let ride of rides" class="border p-4 mb-4 rounded-lg">
+    <h3>{{ ride.start }} → {{ ride.destination }}</h3>
+    <p><strong>Datum:</strong> {{ ride.date }} {{ ride.time }}</p>
+    <p><strong>Freie Plätze:</strong> {{ ride.seatsAvailable }}</p>
+    <button
+      [disabled]="ride.seatsAvailable === 0"
+      (click)="reserveSeat(ride.id)"
+      class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+    >
+      Platz reservieren
+    </button>
+  </li>
+</ul>

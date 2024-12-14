@@ -1,0 +1,10 @@
+<div class="border p-4 rounded-lg shadow-sm mb-4">
+  <p><strong>Start:</strong> {{ ride.start }}</p>
+  <p><strong>Ziel:</strong> {{ ride.destination }}</p>
+  <p><strong>Adresse:</strong> {{ ride.address }}</p> <!-- Adresse anzeigen -->
+  <p><strong>Datum:</strong> {{ ride.date }} {{ ride.time }}</p>
+  <p><strong>Fahrer:</strong> {{ ride.driverName }} ({{ ride.phone }} / {{ ride.email }})</p>
+  <p><strong>Freie Plätze:</strong> {{ ride.seatsAvailable }}</p>
+  <p><strong>Auto:</strong> {{ ride.carPlate }}</p>
+  <div class="map-container" id="map-{{ ride.start }}"></div>
+</div>

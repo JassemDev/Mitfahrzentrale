@@ -1,0 +1,39 @@
+<div class="max-w-md mx-auto">
+  <h2 class="text-3xl font-semibold mb-6">Login</h2>
+
+  <!-- Fehleranzeige -->
+  <div *ngIf="error" class="text-red-500 mb-4">{{ error }}</div>
+
+  <!-- Login-Formular -->
+  <form (ngSubmit)="login()" class="space-y-4">
+    <div>
+      <label for="email" class="block text-gray-700">E-Mail</label>
+      <input
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        type="email"
+        class="w-full border rounded p-2"
+        required
+      />
+    </div>
+    <div>
+      <label for="password" class="block text-gray-700">Passwort</label>
+      <input
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        class="w-full border rounded p-2"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      [disabled]="loading"
+      class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full"
+    >
+      {{ loading ? 'Anmelden...' : 'Einloggen' }}
+    </button>
+  </form>
+</div>

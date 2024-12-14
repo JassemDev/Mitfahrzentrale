@@ -1,0 +1,132 @@
+<!-- <h2 class="text-3xl font-semibold mb-6">Fahrer-Dashboard</h2>
+
+
+<div *ngIf="rides.length === 0" class="text-gray-500 text-center p-4 border rounded">
+  Es wurden noch keine Fahrten erstellt.
+</div>
+
+
+<ul *ngIf="rides.length > 0">
+  <li *ngFor="let ride of rides" class="border p-4 mb-4 rounded-lg shadow-md">
+
+    <div class="mb-4">
+      <h3 class="text-xl font-semibold text-blue-600">{{ ride.start }} → {{ ride.destination }}</h3>
+      <p class="text-gray-700">
+        <strong>Datum:</strong> {{ ride.date }} {{ ride.time }}
+      </p>
+      <p class="text-gray-700">
+        <strong>Freie Plätze:</strong> {{ ride.seatsAvailable }}
+      </p>
+    </div>
+
+
+    <div class="flex gap-4">
+      <button
+        (click)="editRide(ride)"
+        class="bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 transition"
+      >
+        Bearbeiten
+      </button>
+      <button
+        (click)="cancelRide(ride.id)"
+        class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition"
+      >
+        Fahrt stornieren
+      </button>
+    </div>
+
+
+    <div *ngIf="rides.length > 0" class="mt-4">
+      <h4 class="text-lg font-semibold text-gray-800">Reservierungen:</h4>
+      <ul class="mt-2">
+        <li
+          *ngFor="let reservation of ride.reservations"
+          class="border p-3 rounded mb-2 bg-gray-50"
+        >
+          <p><strong>Mitfahrer:</strong> {{ reservation.passengerName }}</p>
+          <p><strong>Status:</strong> {{ reservation.status }}</p>
+
+
+          <button
+            *ngIf="reservation.status === 'pending'"
+            (click)="confirmReservation(ride.id, reservation.id)"
+            class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
+          >
+            Bestätigen
+          </button>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul> -->
+
+<h2 class="text-3xl font-semibold mb-6">Fahrer-Dashboard</h2>
+
+<!-- Keine Fahrten verfügbar -->
+<div *ngIf="rides.length === 0" class="text-gray-500 text-center p-4 border rounded">
+  Es wurden noch keine Fahrten erstellt.
+</div>
+
+<!-- Liste der Fahrten -->
+<ul *ngIf="rides.length > 0">
+  <li *ngFor="let ride of rides" class="border p-4 mb-4 rounded-lg shadow-md">
+    <!-- Fahrtdetails -->
+    <div class="mb-4">
+      <h3 class="text-xl font-semibold text-blue-600">{{ ride.start }} → {{ ride.destination }}</h3>
+      <p class="text-gray-700">
+        <strong>Datum:</strong> {{ ride.date }} {{ ride.time }}
+      </p>
+      <p class="text-gray-700">
+        <strong>Freie Plätze:</strong> {{ ride.seatsAvailable }}
+      </p>
+    </div>
+
+    <!-- Aktionen für die Fahrt -->
+    <div class="flex gap-4">
+      <button
+        (click)="editRide(ride)"
+        class="bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 transition"
+      >
+        Bearbeiten
+      </button>
+      <button
+        (click)="cancelRide(ride.id)"
+        class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition"
+      >
+        Fahrt stornieren
+      </button>
+    </div>
+
+    <!-- Reservierungen -->
+    <div *ngIf="rides.length > 0" class="mt-4">
+      <h4 class="text-lg font-semibold text-gray-800">Reservierungen:</h4>
+      <ul class="mt-2">
+        <li
+          *ngFor="let reservation of ride.reservations"
+          class="border p-3 rounded mb-2 bg-gray-50"
+        >
+          <p><strong>Mitfahrer:</strong> {{ reservation.passengerName }}</p>
+          <p><strong>Status:</strong>
+            <span
+              [ngClass]="{
+                'text-green-600 font-bold': reservation.status === 'confirmed',
+                'text-yellow-600 font-bold': reservation.status === 'pending'
+              }"
+            >
+              {{ reservation.status === 'confirmed' ? 'Bestätigt' : 'Ausstehend' }}
+            </span>
+          </p>
+
+          <!-- Reservierung bestätigen -->
+          <button
+            *ngIf="reservation.status === 'pending'"
+            (click)="confirmReservation(ride.id, reservation.id)"
+            class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
+          >
+            Bestätigen
+          </button>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
